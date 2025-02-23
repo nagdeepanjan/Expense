@@ -9,7 +9,7 @@ env:
   AZURE_CONTAINER_APP_NAME: myexpense-app
   RESOURCE_GROUP: DeepResource_East_US
   GHCR_REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name | toLowerCase }}/expense-app:latest
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/expense-app:latest
   PROJECT_PATH: ./Expense  # Your project folder
 
 jobs:
