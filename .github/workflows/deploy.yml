@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  AZURE_CONTAINER_APP_NAME: myexpense-app
+  AZURE_CONTAINER_APP_NAME: superexpense
   RESOURCE_GROUP: DeepResource_East_US
   GHCR_REGISTRY: ghcr.io
   IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}/expense-app:latest
@@ -42,6 +42,17 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create Azure Container App if not exists
+        run: |
+          az containerapp show --name $AZURE_CONTAINER_APP_NAME --resource-group $RESOURCE_GROUP || \
+          az containerapp create \
+            --name $AZURE_CONTAINER_APP_NAME \
+            --resource-group $RESOURCE_GROUP \
+            --image $IMAGE_NAME \
+            --environment <your-environment-name> \
+            --cpu 0.5 --memory 1.0Gi \
+            --ingress external --target-port 80
 
       - name: Deploy to Azure Container Apps
         run: |
