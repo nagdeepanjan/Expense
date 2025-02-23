@@ -30,8 +30,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t $IMAGE_NAME $PROJECT_PATH  # Use the project folder as context
-          docker push $IMAGE_NAME
+          docker buildx build --platform linux/amd64 -t $IMAGE_NAME $PROJECT_PATH --push
+          
 
   deploy:
     name: Deploy to Azure Container Apps
