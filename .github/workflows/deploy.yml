@@ -9,7 +9,7 @@ env:
   AZURE_CONTAINER_APP_NAME: myexpense-app
   RESOURCE_GROUP: DeepResource_East_US
   GHCR_REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')/expense-app:latest
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name | toLowerCase }}/expense-app:latest
   PROJECT_PATH: ./Expense  # Your project folder
 
 jobs:
@@ -29,9 +29,8 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build and push Docker image
-        run: |
+        run: 
           docker buildx build --platform linux/amd64 -t $IMAGE_NAME $PROJECT_PATH --push
-          
 
   deploy:
     name: Deploy to Azure Container Apps
