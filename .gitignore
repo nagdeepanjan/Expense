@@ -1,0 +1,76 @@
+# Ignore Visual Studio specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore Rider / JetBrains IDE files
+.idea/
+*.sln.iml
+
+# Ignore dependencies
+node_modules/
+bower_components/
+
+# Ignore configuration files
+appsettings*.json
+!appsettings.Development.json  # Allow the development settings if needed
+
+# Ignore logs and other artifacts
+logs/
+*.log
+logs/**
+
+# Ignore coverage reports
+coverage/
+*.coverlet/
+*.coverage
+*.testlog
+
+# Ignore compiled files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.obj
+*.o
+*.so
+*.idb
+*.sbr
+
+# Ignore packages and NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.assets.json
+.nuget/
+
+# Ignore Azure related files
+AzureFunctionsTools/
+
+# Ignore containerization files (Docker)
+.dockerignore
+docker-compose.override.yml
+docker-compose.debug.yml
+docker-compose.production.yml
+
+# Ignore temp and generated files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.DS_Store
+Thumbs.db
+
+# Ignore IDE workspace and metadata
+*.code-workspace
+
+# Ignore Resharper
+_ReSharper.Caches/
