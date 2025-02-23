@@ -45,9 +45,14 @@ jobs:
 
       - name: Deploy to Azure Container Apps
         run: |
+          run: |
+          az containerapp registry set \
+            --name $AZURE_CONTAINER_APP_NAME \
+            --resource-group $RESOURCE_GROUP \
+            --server $GHCR_REGISTRY \
+            --username ${{ github.actor }} \
+            --password ${{ secrets.GITHUB_TOKEN }}
           az containerapp update \
             --name $AZURE_CONTAINER_APP_NAME \
             --resource-group $RESOURCE_GROUP \
-            --image $IMAGE_NAME \
-            --registry-username ${{ github.actor }} \
-            --registry-password ${{ secrets.GITHUB_TOKEN }}
+            --image $IMAGE_NAME
