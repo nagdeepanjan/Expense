@@ -50,3 +50,5 @@ jobs:
             --resource-group $RESOURCE_GROUP \
             --image $IMAGE_NAME \
             --registry-server $GHCR_REGISTRY
+            --registry-username ${{ github.actor }} \
+            --registry-password ${{ secrets.GITHUB_TOKEN }}
