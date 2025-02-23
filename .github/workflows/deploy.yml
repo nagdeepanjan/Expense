@@ -50,7 +50,7 @@ jobs:
             --name $AZURE_CONTAINER_APP_NAME \
             --resource-group $RESOURCE_GROUP \
             --image $IMAGE_NAME \
-            --environment <your-environment-name> \
+            --environment deep-container-app-environment \
             --cpu 0.5 --memory 1.0Gi \
             --ingress external --target-port 80
 
