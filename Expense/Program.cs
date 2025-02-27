@@ -23,12 +23,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.Use(async (context, next) =>
-{
-    context.Response.Headers["Cache-Control"] = "no-cache, must-revalidate";
-    await next();
-});
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
